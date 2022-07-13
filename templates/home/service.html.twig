@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	-
+	{{ service.nom }}
+{% endblock %}
+
+
+{% block body %}
+	<style>
+		.container {
+			text-align: center;
+			margin: 0 15%;
+		}
+		.container li {
+			list-style: none;
+			padding: 15px;
+			background-color: grey;
+			color: white;
+		}
+
+		.container li:nth-of-type(even) {
+			background-color: lightgrey;
+			color: black;
+		}
+	</style>
+
+	{{parent()}}
+	<div class="container">
+		<h1>{{ service.nom }}</h1>
+		<h2>Actuellement constitué de
+			{{ service.user|length}}
+			collaborateurs :</h2>
+		<ul>
+			{% if  service.user|length > 0 %}
+
+				{% for user in service.user %}
+
+					<li class="user">{{ user.nom }}
+						-
+						{{ user.prenom }}
+						|
+						<strong>email :</strong>
+						{{ user.email }}
+						|
+						<strong>Poste :</strong>
+						{{ user.poste.nom}}
+					</li>
+				{% endfor %}
+
+			{% else %}
+				Nous n'avons pas encore de collaborateurs.
+			{% endif %}
+		</ul>
+	</div>
+{% endblock %}

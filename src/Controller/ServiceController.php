@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+ 
 use App\Entity\Service;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +14,7 @@ class ServiceController extends AbstractController
     {
         return $this->render('home/service.html.twig', [
             'controller_name' => 'ServiceController',
-            'service' => $service,
+            'service' => $service
         ]);
     }
 }

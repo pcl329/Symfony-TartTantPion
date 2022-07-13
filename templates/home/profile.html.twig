@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}	
+    {{ parent() }} Profile
+{% endblock %}
+
+{% block body %}
+    {{parent()}}
+
+<div class="container">
+    <h2>Vos informations</h>
+
+    <ul>
+        <li>
+            Prénom :{{app.user.prenom}}
+        </li>
+        <li>
+            Nom :{{app.user.nom}}
+        </li>
+        <li>
+            Age :{{"now"|date("Y") - (app.user.datenaissance|date("Y") )}}ans
+        </li>
+        <li>
+            Email :{{app.user.email}}
+        </li>
+        <li>
+            Inscris depuis le:{{app.user.dateinscription|date("Y-m-d")}}
+        </li>
+        <li>
+            Appartient au service : {{app.user.service.nom}}
+        </li>
+        <li>
+            Poste : {{app.user.poste.nom}}
+        </li>
+    </ul>
+    <div>
+		<a href="{{path('app_profil_edit',{'id': app.user.id} )}}">Modifier son profil</a>
+	</div>
+</div>
+{% endblock %}

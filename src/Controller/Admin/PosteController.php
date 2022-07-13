@@ -3,14 +3,14 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Poste;
-use App\Form\PosteType;
+use App\Form\Poste1Type;
 use App\Repository\PosteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('admin/poste')]
+#[Route('/poste')]
 class PosteController extends AbstractController
 {
     #[Route('/', name: 'app_poste_index', methods: ['GET'])]
@@ -51,11 +51,12 @@ class PosteController extends AbstractController
     #[Route('/{id}/edit', name: 'app_poste_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Poste $poste, PosteRepository $posteRepository): Response
     {
-        $form = $this->createForm(PosteType::class, $poste);
+        $form = $this->createForm(Poste1Type::class, $poste);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $posteRepository->add($poste, true);
+
             return $this->redirectToRoute('app_poste_index', [], Response::HTTP_SEE_OTHER);
         }
 
