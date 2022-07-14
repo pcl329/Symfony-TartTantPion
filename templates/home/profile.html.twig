@@ -27,14 +27,14 @@
             Inscris depuis le:{{app.user.dateinscription|date("Y-m-d")}}
         </li>
         <li>
-            Appartient au service : {{app.user.service.nom}}
+            Appartient au service :{{app.user.service.nom}}
         </li>
         <li>
-            Poste : {{app.user.poste.nom}}
+            Poste :{{app.user.poste.nom}}
         </li>
     </ul>
     <div>
-		<a href="{{path('app_profil_edit',{'id': app.user.id} )}}">Modifier son profil</a>
+		<a href="{{path('app_profile_edit',{'id': app.user.id} )}}">Modifier son profil</a>
 	</div>
 </div>
 {% endblock %}
