@@ -1,12 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{  parent() }} - Accueil
+    {{  parent() }} Accueil
 {% endblock %}
 
 {% block body %}
     {{  parent() }}
-
 
 <div class="welcome">
     <h2>Bienvenue {% if is_granted("ROLE_MEMBER") %} {{ app.user.nom }} ! {% else %} invité mystère {% endif %}</h2>

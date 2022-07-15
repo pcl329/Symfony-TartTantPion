@@ -1,9 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{ parent() }}
-	-
-	{{ service.nom }}
+    {{  parent() }} Service
 {% endblock %}
 
 
@@ -25,33 +23,33 @@
 			color: black;
 		}
 	</style>
+	 {{ parent() }}
 
-	{{parent()}}
-	<div class="container">
-		<h1>{{ service.nom }}</h1>
-		<h2>Actuellement constitué de
-			{{ service.user|length}}
-			collaborateurs :</h2>
-		<ul>
-			{% if  service.user|length > 0 %}
+<div class="container">
+	<h1>{{ service.nom }}</h1>
+	<h2>Actuellement constitué de
+		{{ service.user|length}}
+		collaborateurs :</h2>
+	<ul>
+		{% if  service.user|length > 0 %}
 
-				{% for user in service.user %}
+			{% for user in service.user %}
 
-					<li class="user">{{ user.nom }}
-						-
-						{{ user.prenom }}
-						|
-						<strong>email :</strong>
-						{{ user.email }}
-						|
-						<strong>Poste :</strong>
-						{{ user.poste.nom}}
-					</li>
-				{% endfor %}
+				<li class="user">{{ user.nom }}
+					-
+					{{ user.prenom }}
+					|
+					<strong>email :</strong>
+					{{ user.email }}
+					|
+					<strong>Poste :</strong>
+					{{ user.poste.nom}}
+				</li>
+			{% endfor %}
 
-			{% else %}
-				Nous n'avons pas encore de collaborateurs.
-			{% endif %}
-		</ul>
-	</div>
+		{% else %}
+			Nous n'avons pas encore de collaborateurs.
+		{% endif %}
+	</ul>
+</div>
 {% endblock %}
